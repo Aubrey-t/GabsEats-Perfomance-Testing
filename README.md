@@ -2,14 +2,14 @@
 
 This repository contains comprehensive performance testing scripts for the GabsEats food delivery platform using K6.
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 GabsEats consists of three main applications:
-- **Customer App**: Browse restaurants, place orders, track delivery
-- **Vendor App**: Receive orders, manage menus, update order status
-- **Rider App**: Accept deliveries, update delivery status
+- Customer App: Browse restaurants, place orders, track delivery
+- Vendor App: Receive orders, manage menus, update order status
+- Rider App: Accept deliveries, update delivery status
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── config/
@@ -48,52 +48,32 @@ GabsEats consists of three main applications:
 └── results/                    # Test results and reports
 ```
 
-## 🚀 Quick Start
+## Running Tests
 
-### Prerequisites
-- K6 installed (https://k6.io/docs/getting-started/installation/)
-- Node.js (for data generation utilities)
+| Scenario ID | Test Type     | Description                                         | Command                                 |
+|-------------|--------------|-----------------------------------------------------|-----------------------------------------|
+| T01         | Load Test    | 500 users login and browse restaurants              | k6 run load-tests/load-test.js          |
+| T02         | Load Test    | 1000 users place orders within 2 minutes            | k6 run load-tests/load-test.js          |
+| T03         | Stress Test  | 2000 homepage requests in 30 seconds                | k6 run load-tests/stress-test.js        |
+| T04         | Spike Test   | Sudden burst of 1500 concurrent users               | k6 run load-tests/spike-test.js         |
+| T05         | Soak Test    | 200 users continuously active for 2 hours           | k6 run load-tests/soak-test.js          |
+| T06         | API Latency  | Measure order creation API under peak load          | k6 run load-tests/latency-test.js       |
 
-### Running Tests
+> Update the relevant test script parameters in `config/environment.json` and `config/test-data.json` as needed for each scenario.
 
-1. **Smoke Test** (Basic functionality):
-```bash
-k6 run load-tests/smoke-test.js
-```
+## Key Metrics Monitored
 
-2. **Load Test** (1000 customers, 200 vendors, 300 riders):
-```bash
-k6 run load-tests/load-test.js
-```
+- Response Time: P95, P99 latencies
+- Error Rate: HTTP error percentages
+- Throughput: Requests per second
+- User Experience: Time to complete journeys
+- Authentication: Login success rates
+- Business Metrics: Order placement success, delivery tracking
 
-3. **Stress Test** (High load):
-```bash
-k6 run load-tests/stress-test.js
-```
-
-## 📊 Key Metrics Monitored
-
-- **Response Time**: P95, P99 latencies
-- **Error Rate**: HTTP error percentages
-- **Throughput**: Requests per second
-- **User Experience**: Time to complete journeys
-- **Authentication**: Login success rates
-- **Business Metrics**: Order placement success, delivery tracking
-
-## 🔧 Configuration
+## Configuration
 
 Update `config/environment.json` to set your API endpoints and test parameters.
 
-## 📈 Interpreting Results
+## Reporting
 
-- **Green**: All metrics within acceptable thresholds
-- **Yellow**: Some metrics approaching limits
-- **Red**: Performance issues detected
-
-## 🛠️ Best Practices
-
-1. **Modular Design**: Reusable components in `lib/`
-2. **Environment Config**: Separate configs for different environments
-3. **Data Management**: Realistic test data generation
-4. **Authentication**: Proper JWT token handling
-5. **Monitoring**: Comprehensive metrics collection 
+Test results and CSV reports are saved in the `results/` directory after each run. Review these files for detailed metrics and scenario outcomes. 
