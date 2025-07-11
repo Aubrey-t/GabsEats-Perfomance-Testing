@@ -1,0 +1,46 @@
+{
+  "name": "gabseats-performance-testing",
+  "version": "1.0.0",
+  "description": "Comprehensive performance testing framework for GabsEats food delivery platform using K6",
+  "main": "README.md",
+  "scripts": {
+    "test:smoke": "k6 run load-tests/smoke-test.js",
+    "test:load": "k6 run load-tests/load-test.js",
+    "test:stress": "k6 run load-tests/stress-test.js",
+    "test:spike": "k6 run load-tests/spike-test.js",
+    "test:all": "npm run test:smoke && npm run test:load && npm run test:stress && npm run test:spike",
+    "test:customer": "k6 run --vus 10 --duration 2m journeys/customer-journey.js",
+    "test:vendor": "k6 run --vus 5 --duration 2m journeys/vendor-journey.js",
+    "test:rider": "k6 run --vus 5 --duration 2m journeys/rider-journey.js",
+    "validate": "node scripts/validate-config.js",
+    "setup": "node scripts/setup-test-data.js",
+    "clean": "rm -rf results/*.json",
+    "report": "node scripts/generate-report.js"
+  },
+  "keywords": [
+    "performance-testing",
+    "k6",
+    "load-testing",
+    "stress-testing",
+    "food-delivery",
+    "api-testing",
+    "automation"
+  ],
+  "author": "GabsEats Performance Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "k6": "^0.45.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabseats/performance-testing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gabseats/performance-testing/issues"
+  },
+  "homepage": "https://github.com/gabseats/performance-testing#readme"
+} 

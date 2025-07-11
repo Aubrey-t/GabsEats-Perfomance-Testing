@@ -1,0 +1,89 @@
+{
+  "environments": {
+    "local": {
+      "baseUrl": "http://localhost:3000",
+      "apiVersion": "v1",
+      "timeout": "30s"
+    },
+    "uat": {
+      "baseUrl": "http://13.244.62.202/api/v1",
+      "apiVersion": "v1",
+      "timeout": "30s"
+    },
+    "staging": {
+      "baseUrl": "https://staging-api.gabseats.com",
+      "apiVersion": "v1",
+      "timeout": "30s"
+    },
+    "production": {
+      "baseUrl": "https://api.gabseats.com",
+      "apiVersion": "v1",
+      "timeout": "30s"
+    }
+  },
+  "endpoints": {
+    "auth": {
+      "customer": "/auth/login",
+      "vendor": "/vendor/auth/login",
+      "rider": "/delivery-man/auth/login",
+      "register": "/auth/register",
+      "refresh": "/auth/refresh"
+    },
+    "customer": {
+      "vendors": "/restaurants/get-restaurants",
+      "vendorDetails": "/restaurants/details/{id}",
+      "cart": "/customer/cart",
+      "addToCart": "/customer/cart/add",
+      "orders": "/customer/order",
+      "placeOrder": "/customer/order/place",
+      "trackOrder": "/customer/order/track",
+      "orderList": "/customer/order/list",
+      "messages": "/customer/message/list"
+    },
+    "vendor": {
+      "orders": "/vendor/orders",
+      "accept": "/vendor/orders/{orderId}/accept",
+      "menu": "/vendor/menu",
+      "updateStatus": "/vendor/orders/{orderId}/status"
+    },
+    "rider": {
+      "assignments": "/delivery-man/assignments",
+      "updateStatus": "/delivery-man/orders/{orderId}/status",
+      "location": "/delivery-man/location"
+    }
+  },
+  "load": {
+    "smoke": {
+      "customers": 10,
+      "vendors": 5,
+      "riders": 5,
+      "duration": "2m"
+    },
+    "load": {
+      "customers": 1000,
+      "vendors": 200,
+      "riders": 300,
+      "duration": "10m"
+    },
+    "stress": {
+      "customers": 2000,
+      "vendors": 400,
+      "riders": 600,
+      "duration": "15m"
+    },
+    "spike": {
+      "customers": 1500,
+      "vendors": 300,
+      "riders": 450,
+      "duration": "5m"
+    }
+  },
+  "thresholds": {
+    "responseTime": {
+      "p95": 2000,
+      "p99": 5000
+    },
+    "errorRate": 5,
+    "throughput": 100
+  }
+} 

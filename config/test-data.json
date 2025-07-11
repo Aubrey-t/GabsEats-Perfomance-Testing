@@ -1,0 +1,94 @@
+{
+  "customers": [
+    {
+      "email": "customer1@test.com",
+      "password": "TestPass123!",
+      "name": "John Customer",
+      "phone": "+1234567890",
+      "address": "123 Main St, City, State 12345"
+    },
+    {
+      "email": "customer2@test.com",
+      "password": "TestPass123!",
+      "name": "Jane Customer",
+      "phone": "+1234567891",
+      "address": "456 Oak Ave, City, State 12345"
+    }
+  ],
+  "vendors": [
+    {
+      "email": "vendor1@test.com",
+      "password": "VendorPass123!",
+      "name": "Pizza Palace",
+      "phone": "+1234567892",
+      "address": "789 Restaurant Blvd, City, State 12345",
+      "cuisine": "Italian"
+    },
+    {
+      "email": "vendor2@test.com",
+      "password": "VendorPass123!",
+      "name": "Burger House",
+      "phone": "+1234567893",
+      "address": "321 Fast Food St, City, State 12345",
+      "cuisine": "American"
+    }
+  ],
+  "riders": [
+    {
+      "email": "rider1@test.com",
+      "password": "RiderPass123!",
+      "name": "Mike Rider",
+      "phone": "+1234567894",
+      "vehicle": "Motorcycle",
+      "license": "MC123456"
+    },
+    {
+      "email": "rider2@test.com",
+      "password": "RiderPass123!",
+      "name": "Sarah Rider",
+      "phone": "+1234567895",
+      "vehicle": "Bicycle",
+      "license": "BC789012"
+    }
+  ],
+  "menuItems": [
+    {
+      "name": "Margherita Pizza",
+      "description": "Classic tomato and mozzarella pizza",
+      "price": 15.99,
+      "category": "Pizza",
+      "preparationTime": 20
+    },
+    {
+      "name": "Pepperoni Pizza",
+      "description": "Spicy pepperoni with cheese",
+      "price": 17.99,
+      "category": "Pizza",
+      "preparationTime": 20
+    },
+    {
+      "name": "Classic Burger",
+      "description": "Beef burger with lettuce and tomato",
+      "price": 12.99,
+      "category": "Burgers",
+      "preparationTime": 15
+    },
+    {
+      "name": "Chicken Wings",
+      "description": "Crispy wings with hot sauce",
+      "price": 14.99,
+      "category": "Appetizers",
+      "preparationTime": 12
+    }
+  ],
+  "orderStatuses": [
+    "pending",
+    "accepted",
+    "preparing",
+    "ready_for_pickup",
+    "picked_up",
+    "in_transit",
+    "delivered",
+    "cancelled"
+  ]
+} 
