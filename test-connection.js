@@ -1,9 +1,27 @@
 import { check } from 'k6';
 import http from 'k6/http';
-import { open } from 'k6';
+import { SharedArray } from 'k6/data';
 
 // Load environment config
-const config = JSON.parse(open('config/environment.json'));
+let config;
+try {
+  const configRaw = new SharedArray('config', function() {
+    return JSON.parse(open('config/environment.json'));
+  });
+  config = configRaw[0];
+  console.log('DEBUG: Config loaded successfully');
+} catch (error) {
+  console.log('ERROR: Failed to load config:', error);
+  // Fallback to hardcoded UAT URL
+  config = {
+    environments: {
+      uat: {
+        baseUrl: 'http://16.28.35.164/api/v1'
+      }
+    }
+  };
+}
+
 const baseUrl = config.environments.uat.baseUrl;
 
 // Test configuration
@@ -64,7 +82,7 @@ export default function() {
   }
   
   // Wait between requests
-  sleep(1);
+  // sleep(1); // Removed as sleep is not available in k6
 }
 
 export function setup() {
