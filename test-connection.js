@@ -1,6 +1,6 @@
 import { check } from 'k6';
 import http from 'k6/http';
-import { open } from 'k6/fs';
+import { open } from 'k6';
 
 // Load environment config
 const config = JSON.parse(open('config/environment.json'));
