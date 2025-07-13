@@ -6,7 +6,7 @@
       "timeout": "30s"
     },
     "uat": {
-      "baseUrl": "http://13.244.62.202/api/v1",
+      "baseUrl": "http://16.28.35.164/api/v1",
       "apiVersion": "v1",
       "timeout": "30s"
     },
