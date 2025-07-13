@@ -1,5 +1,10 @@
 import { check } from 'k6';
 import http from 'k6/http';
+import { open } from 'k6/fs';
+
+// Load environment config
+const config = JSON.parse(open('config/environment.json'));
+const baseUrl = config.environments.uat.baseUrl;
 
 // Test configuration
 export const options = {
@@ -10,9 +15,6 @@ export const options = {
     http_req_failed: ['rate<0.1'],
   },
 };
-
-// UAT API base URL
-const baseUrl = 'http://13.244.62.202/api/v1';
 
 export default function() {
   console.log('🔍 Testing UAT API connectivity...');
